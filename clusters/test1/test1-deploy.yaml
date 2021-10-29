@@ -1,0 +1,19 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: test1
+spec:
+  baseDomain: dev01.red-chesterfield.com
+  clusterName: mce-test1
+  platform:
+    aws:
+      credentialsSecretRef:
+        name: aws-creds
+      region: us-east-1
+  provisioning:
+    installConfigSecretRef:
+      name: mce-test-install-config
+    imageSetRef:
+      name: openshift-v495
+  pullSecretRef:
+    name: ocp-pull-secret
