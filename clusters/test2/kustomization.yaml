@@ -1,6 +1,6 @@
 resources:
 - clusterimageset.yaml
-# - clusterdeployment.yaml
+- clusterdeployment.yaml
 
 secretGenerator:
 - name: test2-install-config

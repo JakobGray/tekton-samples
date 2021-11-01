@@ -27,7 +27,7 @@ spec:
         resource: git-source
     taskRef:
       kind: Task
-      name: kubectl-create
+      name: kustomize
   - name: cluster-deploy-wait
     params:
     - name: cluster
