@@ -1,0 +1,10 @@
+resources:
+- clusterimageset.yaml
+# - clusterdeployment.yaml
+
+secretGenerator:
+- name: test2-install-config
+  files:
+  - install-config.yaml
+generatorOptions:
+  disableNameSuffixHash: true

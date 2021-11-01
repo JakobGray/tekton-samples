@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: multiclusterhub-repo
+  name: multiclusterhub-repo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multiclusterhub-repo
+  template:
+    metadata:
+      labels:
+        app: multiclusterhub-repo
+    spec:
+      containers:
+        - image: quay.io/jakobgray/multiclusterhub-repo:latest
+          imagePullPolicy: Always
+          name: multiclusterhub-repo
+          ports:
+            - containerPort: 3000
+              name: helmrepo
+              protocol: TCP
+          env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: MCH_REPO_PORT
+            value: "3000"
+          - name: MCH_REPO_SERVICE
+            value: multiclusterhub-repo

@@ -1,0 +1,19 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: jdg-test2
+spec:
+  baseDomain: dev01.red-chesterfield.com
+  clusterName: jdg-cluster
+  platform:
+    aws:
+      credentialsSecretRef:
+        name: aws-creds
+      region: us-east-1
+  provisioning:
+    installConfigSecretRef:
+      name: test2-install-config
+    imageSetRef:
+      name: openshift-v495
+  pullSecretRef:
+    name: ocp-pull-secret
